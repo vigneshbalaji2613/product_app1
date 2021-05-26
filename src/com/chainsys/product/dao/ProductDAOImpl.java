@@ -100,7 +100,16 @@ public class ProductDAOImpl implements ProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+	}
+		public void updatedate(Product product) {
+			try {
+				pstmt = con.prepareStatement("update product_2613 set expiry_date=? where id=?");
+				pstmt.setString(1, product.getName());
+				pstmt.setInt(2, product.getId());
+				pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 	}
 
 	@Override

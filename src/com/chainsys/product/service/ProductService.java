@@ -13,7 +13,7 @@ public interface ProductService {
 	void save(Product Product);
 
 	void update(Product Product) throws ProductNotFoundException;
-
+	void updatedate(Product Product) throws ProductNotFoundException;
 	void delete(int id) throws ProductNotFoundException;
 
 }
