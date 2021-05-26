@@ -2,7 +2,7 @@ package com.chainsys.product.service;
 
 import java.util.Set;
 import java.util.List;
-
+import java.time.LocalDate;
 import com.chainsys.product.exception.ProductNotFoundException;
 import com.chainsys.product.model.Product;
 
@@ -13,7 +13,7 @@ public interface ProductService {
 	Product findById(int id) throws ProductNotFoundException;
 	Product findByname(String name) throws ProductNotFoundException;
 	void save(Product Product);
-
+	Product findByDate(LocalDate date) throws ProductNotFoundException;
 
 	void update(Product Product) throws ProductNotFoundException;
 	

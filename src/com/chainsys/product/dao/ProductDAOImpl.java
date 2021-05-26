@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
 import com.chainsys.product.model.Product;
+import java.time.LocalDate;
 
 public class ProductDAOImpl implements ProductDAO {
 
@@ -137,6 +138,7 @@ public class ProductDAOImpl implements ProductDAO {
 			e.printStackTrace();
 		}
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> findAllName() {
 		ArrayList nameList = null;
@@ -151,6 +153,22 @@ public class ProductDAOImpl implements ProductDAO {
 			e.printStackTrace();
 		}
 		return nameList;
+	}
+		
+		@Override
+		public Product findByDate(LocalDate date) {
+			Product product = null;
+			try {
+				pstmt = con.prepareStatement("select * from product_2591 where expiry_date=?");
+				pstmt.setDate(1, Date.valueOf(date));
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					product = new Product(rs.getInt("id"), rs.getString("name"), rs.getDate("expiry_date").toLocalDate());
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return product;
 	}
 	
 }

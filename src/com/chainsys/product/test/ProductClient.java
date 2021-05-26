@@ -114,7 +114,17 @@ public class ProductClient {
 			nameList = service.findAllName();
 			System.out.println(nameList);
 			break;
-				
+		case 10:
+			System.out.println("Find the Product By Date");
+			System.out.println("Enter the Product Date");
+			date = scanner.next();
+			dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			try {
+				Product product = service.findByDate(LocalDate.parse(date,dateFormat));
+				System.out.println(product);
+			} catch (ProductNotFoundException e) {
+			}
+			break;	
 			
 		default:
 			break;
