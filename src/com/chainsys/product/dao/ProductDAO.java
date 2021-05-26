@@ -13,6 +13,11 @@ public interface ProductDAO {
 
 	void update(Product product);
 	void updatedate(Product product);
-
+    
 	void delete(int id);
+
+	void deletebyname(String name);
+
+
+	
 }

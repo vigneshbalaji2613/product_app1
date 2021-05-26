@@ -95,19 +95,18 @@ public class ProductClient {
 
 			}
 			break;
-			
 		case 8:
 			System.out.println("Deleting a Product");
-			System.out.println("Enter the Product Id");
-			id = scanner.nextInt();
+			System.out.println("Enter the Product Name");
+			name = scanner.next();
 			try {
-				service.delete(id);
+				service.deletebyname(name);
 				productSet = service.findAll();
 				System.out.println(productSet);
 			} catch (ProductNotFoundException e) {
 			}
-			break;
 		
+			
 			
 		default:
 			break;

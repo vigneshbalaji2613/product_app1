@@ -11,10 +11,13 @@ public interface ProductService {
 	Product findById(int id) throws ProductNotFoundException;
 	Product findByname(String name) throws ProductNotFoundException;
 	void save(Product Product);
-	void delete(LocalDate date) throws ProductNotFoundException;
+
 
 	void update(Product Product) throws ProductNotFoundException;
-	void updatedate(Product Product) throws ProductNotFoundException;
+	
 	void delete(int id) throws ProductNotFoundException;
+	Product findByName(String name) throws ProductNotFoundException;
 
+	void update_expire(Product uppro) throws ProductNotFoundException;
+	void deletebyname(String name) throws ProductNotFoundException;
 }

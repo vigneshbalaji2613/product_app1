@@ -1,6 +1,7 @@
 package com.chainsys.product.dao;
 
 import java.sql.Connection;
+import com.chainsys.product.exception.ProductNotFoundException;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -111,33 +112,8 @@ public class ProductDAOImpl implements ProductDAO {
 				e.printStackTrace();
 			}
 	}
-		public void update_expire(Product uppro) throws ProductNotFoundException {
-			Product result = dao.findById(uppro.getId());
-			if (result == null) {
-				throw new ProductNotFoundException("Product Id Not Found");
-			} else {
-				dao.update_expiry(uppro);
-			}		
-		}
-		public void delete(LocalDate date) throws ProductNotFoundException {
-			Product Product = dao.findByDate(date);
-			if (Product == null) {
-				throw new ProductNotFoundException("Product doesn't exist!!");
-			} else {
-				dao.delete(date);
-			}		
-		}
 		
-		public void delete(String name) throws ProductNotFoundException {
-			Product Product = dao.findByName(name);
-			if (Product == null) {
-				throw new ProductNotFoundException("Product doesn't exist!!");
-			} else {
-				dao.delete(name);
-			}		
-		}
-
-	}
+	
 
 	@Override
 	public void delete(int id) {
@@ -150,5 +126,18 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 
 	}
-
+	@Override
+	public void deletebyname(String name) {
+		try {
+			pstmt = con.prepareStatement("delete product_2607 where P_name=?");
+			pstmt.setString(1, name);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
+
+
+	
+	
