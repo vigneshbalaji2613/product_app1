@@ -9,7 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
-
+import java.util.List;
+import java.util.ArrayList;
 import com.chainsys.product.model.Product;
 
 public class ProductDAOImpl implements ProductDAO {
@@ -136,7 +137,25 @@ public class ProductDAOImpl implements ProductDAO {
 			e.printStackTrace();
 		}
 	}
+	@Override
+	public List<String> findAllName() {
+		ArrayList nameList = null;
+		try {
+			pstmt = con.prepareStatement("select Name from product_2591");
+			rs = pstmt.executeQuery();
+			nameList = new ArrayList<>();
+			while (rs.next()) {
+				nameList.add(rs.getString("name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nameList;
+	}
+	
 }
+
+     
 
 
 	

@@ -1,7 +1,7 @@
 package com.chainsys.product.service;
 
 import java.util.Set;
-
+import java.util.List;
 import com.chainsys.product.dao.ProductDAO;
 import com.chainsys.product.dao.ProductDAOImpl;
 import com.chainsys.product.exception.ProductNotFoundException;
@@ -19,6 +19,11 @@ public class ProductServiceImpl implements ProductService {
 	public Set<Product> findAll() {
 		return dao.findAll();
 	}
+	public List<String> findAllName() {
+		return dao.findAllName();
+	}
+
+
 
 	@Override
 	public Product findById(int id) throws ProductNotFoundException {
@@ -64,6 +69,24 @@ public class ProductServiceImpl implements ProductService {
 		} else {
 			dao.deletebyname(name);
 		}
+	}
+
+	@Override
+	public Product findByname(String name) throws ProductNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product findByName(String name) throws ProductNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update_expire(Product uppro) throws ProductNotFoundException {
+		// TODO Auto-generated method stub
+		
 	}
 }
 	
