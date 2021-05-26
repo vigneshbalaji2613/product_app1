@@ -53,6 +53,7 @@ public class ProductClient {
 			break;
 		case 4:
 			System.out.println("Adding a Product");
+			System.out.println("product");
 			date = "06/05/2019";
 			dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 			Product newProduct = new Product(2, "Pencil", LocalDate.parse(date, dateFormat));
@@ -92,6 +93,18 @@ public class ProductClient {
 				System.out.println(productSet);
 			} catch (ProductNotFoundException e) {
 
+			}
+			break;
+			
+		case 8:
+			System.out.println("Deleting a Product");
+			System.out.println("Enter the Product Id");
+			id = scanner.nextInt();
+			try {
+				service.delete(id);
+				productSet = service.findAll();
+				System.out.println(productSet);
+			} catch (ProductNotFoundException e) {
 			}
 			break;
 		
