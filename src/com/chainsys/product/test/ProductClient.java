@@ -126,6 +126,20 @@ public class ProductClient {
 			}
 			break;	
 			
+		case 11:
+			System.out.println("Deleting a Product By Expiry Date");
+			
+			try {
+				System.out.println("Enter the Product Expiry Date");
+				date = scanner.next();
+				dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+				service.delete(LocalDate.parse(date,dateFormat));
+				productSet = service.findAll();
+				System.out.println(productSet);
+			} catch (ProductNotFoundException e) {
+			}
+			break;
 		default:
 			break;
 		}

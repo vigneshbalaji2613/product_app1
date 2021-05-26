@@ -14,7 +14,7 @@ public interface ProductService {
 	Product findByname(String name) throws ProductNotFoundException;
 	void save(Product Product);
 	Product findByDate(LocalDate date) throws ProductNotFoundException;
-
+     
 	void update(Product Product) throws ProductNotFoundException;
 	
 	void delete(int id) throws ProductNotFoundException;
@@ -22,4 +22,5 @@ public interface ProductService {
 
 	void update_expire(Product uppro) throws ProductNotFoundException;
 	void deletebyname(String name) throws ProductNotFoundException;
+	void delete(LocalDate date) throws ProductNotFoundException;
 }
