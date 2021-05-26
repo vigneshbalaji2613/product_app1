@@ -111,6 +111,33 @@ public class ProductDAOImpl implements ProductDAO {
 				e.printStackTrace();
 			}
 	}
+		public void update_expire(Product uppro) throws ProductNotFoundException {
+			Product result = dao.findById(uppro.getId());
+			if (result == null) {
+				throw new ProductNotFoundException("Product Id Not Found");
+			} else {
+				dao.update_expiry(uppro);
+			}		
+		}
+		public void delete(LocalDate date) throws ProductNotFoundException {
+			Product Product = dao.findByDate(date);
+			if (Product == null) {
+				throw new ProductNotFoundException("Product doesn't exist!!");
+			} else {
+				dao.delete(date);
+			}		
+		}
+		
+		public void delete(String name) throws ProductNotFoundException {
+			Product Product = dao.findByName(name);
+			if (Product == null) {
+				throw new ProductNotFoundException("Product doesn't exist!!");
+			} else {
+				dao.delete(name);
+			}		
+		}
+
+	}
 
 	@Override
 	public void delete(int id) {
